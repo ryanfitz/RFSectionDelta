@@ -12,6 +12,8 @@
 		C47FE0FC1AA9311700839EF0 /* RFSectionDeltaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47FE0FB1AA9311700839EF0 /* RFSectionDeltaTests.swift */; };
 		C47FE10A1AA9327000839EF0 /* Dollar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C47FE1091AA9327000839EF0 /* Dollar.framework */; };
 		C47FE10C1AA932F100839EF0 /* Dollar.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C47FE1091AA9327000839EF0 /* Dollar.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C47FE10E1AA9335B00839EF0 /* RFSectionDelta.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47FE10D1AA9335B00839EF0 /* RFSectionDelta.swift */; };
+		C47FE1131AA94E0B00839EF0 /* Dollar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C47FE1091AA9327000839EF0 /* Dollar.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +47,7 @@
 		C47FE0FA1AA9311700839EF0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C47FE0FB1AA9311700839EF0 /* RFSectionDeltaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RFSectionDeltaTests.swift; sourceTree = "<group>"; };
 		C47FE1091AA9327000839EF0 /* Dollar.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Dollar.framework; path = Carthage/Build/iOS/Dollar.framework; sourceTree = "<group>"; };
+		C47FE10D1AA9335B00839EF0 /* RFSectionDelta.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RFSectionDelta.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C47FE1131AA94E0B00839EF0 /* Dollar.framework in Frameworks */,
 				C47FE0F51AA9311700839EF0 /* RFSectionDelta.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -90,6 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				C47FE0EE1AA9311700839EF0 /* RFSectionDelta.h */,
+				C47FE10D1AA9335B00839EF0 /* RFSectionDelta.swift */,
 				C47FE0EC1AA9311700839EF0 /* Supporting Files */,
 			);
 			path = RFSectionDelta;
@@ -236,6 +241,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C47FE10E1AA9335B00839EF0 /* RFSectionDelta.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,6 +352,7 @@
 		C47FE1001AA9311700839EF0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -359,12 +366,14 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		C47FE1011AA9311700839EF0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -387,6 +396,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -404,6 +414,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = RFSectionDeltaTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -430,6 +441,7 @@
 				C47FE1011AA9311700839EF0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C47FE1021AA9311700839EF0 /* Build configuration list for PBXNativeTarget "RFSectionDeltaTests" */ = {
 			isa = XCConfigurationList;
@@ -438,6 +450,7 @@
 				C47FE1041AA9311700839EF0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
