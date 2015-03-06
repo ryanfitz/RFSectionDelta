@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Dollar
 
 public struct MovedIndex : Equatable, Printable {
     public let oldIndex : Int
@@ -34,7 +33,7 @@ public struct RFDelta {
     public let movedIndexes : [MovedIndex]?
 }
 
-public class RFSectionDelta {
+@objc public class RFSectionDelta {
     
     public init() {
         
@@ -48,39 +47,28 @@ public class RFSectionDelta {
         
         if let oldData = oldArray {
             if let newData = newArray {
-                let newItems = $.difference(newData, oldData)
-                let newIdxs = $.map(newItems) { $.indexOf(newData, value: $0) }
                 
-                let removedItems = $.difference(oldData, newData)
-                let removedIdxs = $.map(removedItems) { $.indexOf(oldData, value: $0) }
+                // TODO switch to using native sets when support swift 1.2
+                let newItemsSet = indexArray(newData)
+                let oldItemSet = indexArray(oldData)
                 
-                for idx in removedIdxs {
-                    if let index = idx {
-                        removeSets.addIndex(index)
-                    }
-                }
-                
-                for idx in newIdxs {
-                    if let index = idx {
-                        insertSets.addIndex(index)
-                    }
-                }
-                
-                let unchangedItems = $.intersection(oldData, newData)
-                
-                for item in unchangedItems {
-                    // TODO clean up when switching to swift 1.2
-                    if let oldIdx = $.indexOf(oldData, value: item) {
-                        if let newIdx = $.indexOf(newData, value: item) {
-                            if newIdx == oldIdx {
-                                unchangedSets.addIndex(newIdx)
-                            } else {
-                                movedIndexes.append(MovedIndex(oldIndex: oldIdx, newIndex: newIdx))
-                            }
+                for (item, newIdx) in newItemsSet {
+                    if let oldIdx = oldItemSet[item] {
+                        if newIdx == oldIdx {
+                            unchangedSets.addIndex(newIdx)
+                        } else {
+                            movedIndexes.append(MovedIndex(oldIndex: oldIdx, newIndex: newIdx))
                         }
+                    } else {
+                        insertSets.addIndex(newIdx)
                     }
                 }
                 
+                for (item, oldIdx) in oldItemSet {
+                    if newItemsSet[item] == nil {
+                       removeSets.addIndex(oldIdx)
+                    }
+                }
             } else {
                 // new array is nil so remove all
                 for (idx, _) in enumerate(oldData) {
@@ -99,5 +87,15 @@ public class RFSectionDelta {
         var movedIndices : [MovedIndex]? = (movedIndexes.count > 0 ? movedIndexes : nil )
         
         return RFDelta(addedIndices: addedIndices, removedIndices: removedIndices, unchangedIndices: unchangedIndices, movedIndexes: movedIndices)
+    }
+    
+    private func indexArray<T : Hashable>(array : [T]) -> [T : Int] {
+        var result = [T : Int]()
+        
+        for (idx, item) in enumerate(array) {
+            result[item] = idx
+        }
+        
+        return result
     }
 }

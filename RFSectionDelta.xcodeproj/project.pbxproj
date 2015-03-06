@@ -10,10 +10,7 @@
 		C47FE0EF1AA9311700839EF0 /* RFSectionDelta.h in Headers */ = {isa = PBXBuildFile; fileRef = C47FE0EE1AA9311700839EF0 /* RFSectionDelta.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C47FE0F51AA9311700839EF0 /* RFSectionDelta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C47FE0E91AA9311700839EF0 /* RFSectionDelta.framework */; };
 		C47FE0FC1AA9311700839EF0 /* RFSectionDeltaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47FE0FB1AA9311700839EF0 /* RFSectionDeltaTests.swift */; };
-		C47FE10A1AA9327000839EF0 /* Dollar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C47FE1091AA9327000839EF0 /* Dollar.framework */; };
-		C47FE10C1AA932F100839EF0 /* Dollar.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C47FE1091AA9327000839EF0 /* Dollar.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C47FE10E1AA9335B00839EF0 /* RFSectionDelta.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47FE10D1AA9335B00839EF0 /* RFSectionDelta.swift */; };
-		C47FE1131AA94E0B00839EF0 /* Dollar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C47FE1091AA9327000839EF0 /* Dollar.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,7 +30,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				C47FE10C1AA932F100839EF0 /* Dollar.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -46,7 +42,6 @@
 		C47FE0F41AA9311700839EF0 /* RFSectionDeltaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RFSectionDeltaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C47FE0FA1AA9311700839EF0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C47FE0FB1AA9311700839EF0 /* RFSectionDeltaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RFSectionDeltaTests.swift; sourceTree = "<group>"; };
-		C47FE1091AA9327000839EF0 /* Dollar.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Dollar.framework; path = Carthage/Build/iOS/Dollar.framework; sourceTree = "<group>"; };
 		C47FE10D1AA9335B00839EF0 /* RFSectionDelta.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RFSectionDelta.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -55,7 +50,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C47FE10A1AA9327000839EF0 /* Dollar.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,7 +57,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C47FE1131AA94E0B00839EF0 /* Dollar.framework in Frameworks */,
 				C47FE0F51AA9311700839EF0 /* RFSectionDelta.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -128,7 +121,6 @@
 		C47FE1061AA9324C00839EF0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C47FE1091AA9327000839EF0 /* Dollar.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
