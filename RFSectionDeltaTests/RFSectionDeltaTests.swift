@@ -226,4 +226,20 @@ class RFSectionDeltaTests: XCTestCase {
         XCTAssertNil(delta.unchangedIndices, "unchanged indices nil")
         XCTAssert(delta.movedIndexes == nil, "moved indices nil")
     }
+    
+    func testFooBar() {
+        let oldArray  = [1,2,3,4]
+        let newArray  = [5,1,2,3]
+        
+        let section = RFSectionDelta()
+        let delta = section.generateDelta(fromOldArray: oldArray, toNewArray: newArray)
+        
+        XCTAssertNil(delta.unchangedIndices, "unchanged indices nil")
+        println("moved \(delta.movedIndexes)")
+//        XCTAssert(delta.movedIndexes == nil, "moved indices nil")
+        
+        XCTAssertNotNil(delta.addedIndices, "added indices")
+        assertIndexSetEquals(delta.removedIndices!, expected : [3])
+        assertIndexSetEquals(delta.addedIndices!, expected : [0])
+    }
 }
