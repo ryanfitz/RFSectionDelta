@@ -7,7 +7,7 @@ Pod::Spec.new do |s|
   s.social_media_url = 'http://twitter.com/theRyanFitz'
   s.authors = { 'Ryan Fitzgerald' => 'ryan.fitz1@gmail.com' }
   s.source = { :git => 'https://github.com/ryanfitz/RFSectionDelta.git', :tag => s.version }
-  s.ios.deployment_target = '8.0'
-  s.source_files = 'RFSectionDelta/**/*.swift'
+  s.platform     = :ios, "8.0"
+  s.source_files = 'RFSectionDelta/*.swift'
   s.requires_arc = true
 end
