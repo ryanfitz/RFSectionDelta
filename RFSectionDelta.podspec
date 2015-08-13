@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = 'RFSectionDelta'
-  s.version = '1.0.0'
+  s.version = '1.3.0'
   s.license = 'MIT'
   s.summary = 'Transform data changes into table view and collectionview updates'
   s.homepage = 'https://github.com/ryanfitz/RFSectionDelta'
