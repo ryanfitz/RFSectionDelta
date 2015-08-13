@@ -6,8 +6,6 @@
 //  Copyright (c) 2015 ryanfitz. All rights reserved.
 //
 
-import Foundation
-
 public struct MovedIndex : Equatable, Printable {
     public let oldIndex : Int
     public let newIndex : Int
