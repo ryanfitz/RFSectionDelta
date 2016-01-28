@@ -176,8 +176,8 @@ class RFSectionDeltaTests: XCTestCase {
     }
     
     func testNilHandling() {
-        var oldArray : [Int]?
-        var newArray : [Int]?
+        let oldArray : [Int]? = nil
+        let newArray : [Int]? = nil
         
         let section = RFSectionDelta()
         let delta = section.generateDelta(fromOldArray: oldArray, toNewArray: newArray)
@@ -189,8 +189,8 @@ class RFSectionDeltaTests: XCTestCase {
     }
     
     func testEmptyArraysHandling() {
-        var oldArray = [Int]()
-        var newArray = [Int]()
+        let oldArray = [Int]()
+        let newArray = [Int]()
         
         let section = RFSectionDelta()
         let delta = section.generateDelta(fromOldArray: oldArray, toNewArray: newArray)
@@ -202,8 +202,8 @@ class RFSectionDeltaTests: XCTestCase {
     }
     
     func testEmptyArrayAndNilArrayHandling() {
-        var oldArray = [Int]()
-        var newArray : [Int]?
+        let oldArray = [Int]()
+        let newArray : [Int]? = nil
         
         let section = RFSectionDelta()
         let delta = section.generateDelta(fromOldArray: oldArray, toNewArray: newArray)
@@ -215,8 +215,8 @@ class RFSectionDeltaTests: XCTestCase {
     }
     
     func testNilArrayAndEmptyArrayHandling() {
-        var oldArray : [Int]?
-        var newArray = [Int]()
+        let oldArray : [Int]? = nil
+        let newArray = [Int]()
         
         let section = RFSectionDelta()
         let delta = section.generateDelta(fromOldArray: oldArray, toNewArray: newArray)
@@ -235,7 +235,7 @@ class RFSectionDeltaTests: XCTestCase {
         let delta = section.generateDelta(fromOldArray: oldArray, toNewArray: newArray)
         
         XCTAssertNil(delta.unchangedIndices, "unchanged indices nil")
-        println("moved \(delta.movedIndexes)")
+        print("moved \(delta.movedIndexes)")
 //        XCTAssert(delta.movedIndexes == nil, "moved indices nil")
         
         XCTAssertNotNil(delta.addedIndices, "added indices")
