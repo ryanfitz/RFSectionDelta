@@ -46,7 +46,6 @@ public class RFSectionDelta {
         if let oldData = oldArray {
             if let newData = newArray {
                 
-                // TODO switch to using native sets when support swift 1.2
                 let newItemsSet = indexArray(newData)
                 let oldItemSet = indexArray(oldData)
                 
@@ -87,11 +86,11 @@ public class RFSectionDelta {
         return RFDelta(addedIndices: addedIndices, removedIndices: removedIndices, unchangedIndices: unchangedIndices, movedIndexes: movedIndices)
     }
     
-    private func indexArray<T : Hashable>(array : [T]) -> [T : Int] {
-        var result = [T : Int]()
+    private func indexArray<T : Hashable>(array : [T]) -> [Int : Int] {
+        var result = [Int : Int]()
         
         for (idx, item) in array.enumerate() {
-            result[item] = idx
+            result[item.hashValue] = idx
         }
         
         return result
