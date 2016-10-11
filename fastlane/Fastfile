@@ -1,0 +1,78 @@
+# Customise this file, documentation can be found here:
+# https://github.com/fastlane/fastlane/tree/master/fastlane/docs
+# All available actions: https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Actions.md
+# can also be listed using the `fastlane actions` command
+
+# Change the syntax highlighting to Ruby
+# All lines starting with a # are ignored when running `fastlane`
+
+# If you want to automatically update fastlane if a new version is available:
+# update_fastlane
+
+# This is the minimum version number required.
+# Update this, if you use features of a newer version
+fastlane_version "1.98.0"
+
+default_platform :ios
+
+platform :ios do
+  before_all do
+  end
+
+  desc "Runs all the tests"
+  lane :test do
+    lint
+
+    scan(
+      scheme: "RFSectionDelta",
+      devices: ["iPhone 6s"]
+    )
+  end
+
+  desc "Runs linting"
+  lane :lint do
+    swiftlint(
+      mode: :lint,
+      ignore_exit_status: false,
+      config_file: '.swiftlint.yml'
+    )
+  end
+
+  desc "Lint podspec"
+  lane :pod_lint do
+    pod_lib_lint
+  end
+
+  desc "Release new version"
+    lane :release do |options|
+    target_version = options[:version]
+    raise "The version is missed. Use `fastlane release version:{version_number}`.`" if target_version.nil?
+
+    ensure_git_branch
+    ensure_git_status_clean
+
+    pod_lint
+
+    test
+
+    #set_build_number_repository
+    build_number = get_build_number_repository
+    increment_build_number(build_number: build_number, xcodeproj: './RFSectionDelta.xcodeproj')
+    increment_version_number(version_number: target_version, xcodeproj: './RFSectionDelta.xcodeproj')
+
+    version_bump_podspec(path: "RFSectionDelta.podspec", version_number: target_version)
+
+    git_commit(path: ["./RFSectionDelta/Info.plist", "./RFSectionDelta.podspec"],
+      message: "Release version #{target_version}")
+    add_git_tag tag: target_version
+
+    push_to_git_remote
+    pod_push
+  end
+
+  after_all do |lane|
+  end
+
+  error do |lane, exception|
+  end
+end

@@ -1,0 +1,7 @@
+disabled_rules:
+  - valid_docs
+
+line_length: 200
+
+function_body_length:
+  warning: 50
