@@ -23,3 +23,13 @@ DerivedData
 # AppCode specific files
 .idea/
 *.iml
+
+# Bundler
+.bundle
+
+Pods/
+
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots
+fastlane/test_output
